@@ -13,9 +13,11 @@ class Post(models.Model):
     date_posted = models.DateTimeField(default=timezone.now)
     author = models.ForeignKey(USER_MODEL, on_delete=models.CASCADE)
     image = models.ImageField(default='chto.png', upload_to='profile_pics')
+    pdf = models.FileField(null="true", upload_to="blog/uploads")
     tag = models.CharField(max_length=20, null=True, default='без тега')
     # likes = models.IntegerField(default=0)
 
+    
     def __str__(self):
         return self.title
 

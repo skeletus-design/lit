@@ -6,7 +6,7 @@ site = admin.site
 
 @admin.register(Post)
 class PostAdmin(admin.ModelAdmin):
-    list_display = ['id', 'title', 'author', 'tag']
+    list_display = ['id', 'title', 'author', 'tag', 'pdf']
     list_filter = ['date_posted']
     search_fields = [
         'title__icontains',

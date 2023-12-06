@@ -15,16 +15,16 @@
      <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
 
     {% if title %}
-        <title>Кулинарный блог{{ title }}</title>
+        <title>Книжная полка{{ title }}</title>
     {% else %}
-        <title>Твоя книга рецептов</title>
+        <title>Книги на твой вкус</title>
     {% endif %}
 </head>
 <body >
     <header class="site-header">
       <nav class="navbar navbar-expand-md navbar-dark bg-blue fixed-top">
         <div class="container">
-          <a class="navbar-brand mr-4" href="{% url 'blog-home' %}"><i class='bx bx-tada-hover'></i> .recipes</a>
+          <a class="navbar-brand mr-4" href="{% url 'blog-home' %}"><i class='bx bx-tada-hover'></i> Bookshelf</a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
           </button>
@@ -35,7 +35,7 @@
                   <a class="nav-item nav-link" href="{% url 'blog-about' %}">О ресурсе</a>
               <!-- Правая часть навигационной панели -->
                 {% if user.is_authenticated %}
-                  <a class="nav-item nav-link" href="{% url 'post-create' %}">Новый рецепт</a>
+                  {% comment %} <a class="nav-item nav-link" href="{% url 'post-create' %}">Новый рецепт</a> {% endcomment %}
                   <a class="nav-item nav-link" href="{% url 'profile' %}">Профиль</a>
                   <a class="nav-item nav-link" href="{% url 'logout' %}">Выход</a>
                 {% else %}
@@ -80,8 +80,8 @@
             <h3>Патчноут</h3>
             <p class='text-muted'>новости и обновления
               <ul class="list-group">
-                <li class="list-group-item list-group-item-light"><a href='https://docs.google.com/document/d/1GEk9BZICknT7nzF1r_US2J29wvT1hceRaacN2ZdgizU/edit?usp=sharing'>Патч 1.1 </a></li>
-                <li class="list-group-item list-group-item-light"><a href='https://docs.google.com/document/d/1bb19E6TvMQmW38r-_6ozY7yI-ApLb-6RxEfxMeage5w/edit?usp=sharing'>Патч 1.2 </a></li>
+                {% comment %} <li class="list-group-item list-group-item-light"><a href='https://docs.google.com/document/d/1GEk9BZICknT7nzF1r_US2J29wvT1hceRaacN2ZdgizU/edit?usp=sharing'>Патч 1.1 </a></li>
+                <li class="list-group-item list-group-item-light"><a href='https://docs.google.com/document/d/1bb19E6TvMQmW38r-_6ozY7yI-ApLb-6RxEfxMeage5w/edit?usp=sharing'>Патч 1.2 </a></li> {% endcomment %}
                 <li class="list-group-item list-group-item-light">...</li>
                 <li class="list-group-item list-group-item-light">...</li>
               </ul>
@@ -93,7 +93,7 @@
     </main>
     <!-- Футер закреплен внизу, независимо от количества постов на странице -->
     <footer style='width: 100%; position: relative' class="footer bg-dark">
-      <p><a href="{% url 'blog-home' %}">© Вкусно!</a></p>
+      <p><a href="{% url 'blog-home' %}">© Интересно!</a></p>
     </footer>
 
     <!-- Дополнительные скрипты JavaScript -->

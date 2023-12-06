@@ -147,7 +147,7 @@ class PostListViewTag(ListView):
 class PostDetailView(DetailView):
     model = Post
     context_object_name = 'object'
-    fields = ['title', 'content', 'image', 'tag']
+    fields = ['title', 'content', 'image', 'pdf' 'tag']
     
     def get_context_data(self, **kwargs: Any) -> dict[str, Any]:
         context_data = super().get_context_data(**kwargs)

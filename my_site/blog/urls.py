@@ -10,6 +10,7 @@ from .views import (
     PostDeleteView,
     LikeCreateView,
     LikeDeleteView,
+    # export_pdf
 )
 from . import views
 
@@ -24,5 +25,6 @@ urlpatterns = [
     path('post/<int:pk>/delete/', PostDeleteView.as_view(), name='post-delete'),
     path('about/', views.about, name='blog-about'),
     path('post/<int:pk>/like/', views.LikeCreateView.as_view(), name='like_post'),
-    path('post/<int:pk>/unlike/', views.LikeDeleteView.as_view(), name='unlike_post')
+    path('post/<int:pk>/unlike/', views.LikeDeleteView.as_view(), name='unlike_post'),
+    path('post/<int:pk>/read/', views.PDFView.as_view(), name="read")
 ]

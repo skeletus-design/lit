@@ -37,7 +37,8 @@
       <h2 class="article-title">{{ object.title }}</h2>
       <p class="article-content">{{ object.content }}</p>
       <img class="img-content" src="{{ object.image.url }}">
-    </div>
+      <a href={% url 'read' pk=object.pk %} class='btn btn-info'>Читать</a>
+    </div>  
   </article>
 {% endblock content %}
 

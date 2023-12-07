@@ -1,5 +1,7 @@
+import datetime
 from typing import Any
 from django.db import models
+from django.http import HttpResponse
 from django.shortcuts import get_object_or_404, render
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.urls import reverse
@@ -147,7 +149,7 @@ class PostListViewTag(ListView):
 class PostDetailView(DetailView):
     model = Post
     context_object_name = 'object'
-    fields = ['title', 'content', 'image', 'pdf' 'tag']
+    fields = ['title', 'content', 'image','tag']
     
     def get_context_data(self, **kwargs: Any) -> dict[str, Any]:
         context_data = super().get_context_data(**kwargs)
@@ -215,3 +217,19 @@ class PostDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
 
 def about(request):
     return render(request, 'blog/about.html', {'title': 'О книге рецептов'})
+
+from django.http import FileResponse, Http404
+
+
+class PDFView(View):
+    model = Post
+    context_object_name = 'object'
+    
+    def get(self, request, *args, **kwargs):
+        object_pk = kwargs.get('pk')
+        object_instance = self.model.objects.get(pk=object_pk)
+        
+        try:
+            return FileResponse(open(object_instance.pdf.path, 'rb'), content_type='uploads/pdf')
+        except FileNotFoundError:
+            raise Http404()

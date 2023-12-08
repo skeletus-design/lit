@@ -1,6 +1,13 @@
 ﻿{% extends "blog/base.html" %}
 {% load static %}
 {% block content %}
+<form method='GET' action="{% url 'search_posts' %}">
+  <div class="grid row-gap-3 col-lg-8 d-flex align-items-center justify-content-between">
+    <div class="top-0 start-0 p-0 g-col-6 col-lg-8"><input style="height:40px width:60%" type="text" name='q' class="align-line form-control" placeholder="Поиск"></div>
+    <div class="p-2 g-col-6 col-lg-8"><input style="height:40px" class="btn btn-secondary" type='submit' value='Найти' class="itemss"></div>
+    </div>
+  </div>
+</form> 
     {% for post in posts %}
         <article class="content-section">
           <img class="rounded-circle article-img" src="{{ post.author.profile.image.url }}">

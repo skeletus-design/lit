@@ -163,7 +163,7 @@ class PostDetailView(DetailView):
 
 class PostCreateView(LoginRequiredMixin, CreateView):
     model = Post
-    fields = ['title', 'content', 'image', 'tag']
+    fields = ['title', 'content', 'image', 'pdf', 'tag',]
     # @method_decorator(csrf_exempt)
     def form_valid(self, form):
         form.instance.author = self.request.user

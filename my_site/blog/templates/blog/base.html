@@ -35,7 +35,7 @@
                   <a class="nav-item nav-link" href="{% url 'blog-about' %}">О ресурсе</a>
               <!-- Правая часть навигационной панели -->
                 {% if user.is_authenticated %}
-                  {% comment %} <a class="nav-item nav-link" href="{% url 'post-create' %}">Новый рецепт</a> {% endcomment %}
+                  <a class="nav-item nav-link" href="{% url 'post-create' %}">Сделать публикацию</a>
                   <a class="nav-item nav-link" href="{% url 'profile' %}">Профиль</a>
                   <a class="nav-item nav-link" href="{% url 'logout' %}">Выход</a>
                 {% else %}
@@ -50,13 +50,6 @@
     </header>
     <main role="main" class="container">
       {% comment %} Поиск {% endcomment %}
-      <form method='GET' action="{% url 'search_posts' %}">
-        <div class="grid row-gap-3 col-lg-8 d-flex align-items-center justify-content-between">
-          <div class="top-0 start-0 p-0 g-col-6 col-lg-8"><input style="height:40px width:60%" type="text" name='q' class="align-line form-control" placeholder="Поиск"></div>
-          <div class="p-2 g-col-6 col-lg-8"><input style="height:40px" class="btn btn-secondary" type='submit' value='Найти' class="itemss"></div>
-          </div>
-        </div>
-      </form> 
        
       {% comment %} <div class="grid row-gap-3 align-items-center justify-content-between">
         <a href='{% url "like-filter" %}' class="btn btn-warning btn-sm mt-1 mb-1">Сначала популярные</a>

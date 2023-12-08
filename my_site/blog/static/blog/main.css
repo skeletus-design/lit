@@ -156,3 +156,8 @@ footer a:hover {
   background: #F9F0DA;
   color: #9E9C9C;
 }
+
+.fadeButton {
+  opacity: 0;
+  transition: opacity 0.5s;
+}

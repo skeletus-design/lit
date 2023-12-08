@@ -32,7 +32,7 @@ from django.db.models import Count, Q
 
 
 
-def home(request):
+def home(request, self):
     context = {
         'posts': Post.objects.all()
     }
@@ -166,8 +166,12 @@ class PostCreateView(LoginRequiredMixin, CreateView):
     fields = ['title', 'content', 'image', 'pdf', 'tag',]
     # @method_decorator(csrf_exempt)
     def form_valid(self, form):
-        form.instance.author = self.request.user
-        return super().form_valid(form)
+        try:
+            form.instance.author = self.request.user
+            return super().form_valid(form)
+        except:
+            
+            messages.error(request=self.request, message='Ошибка')
     
     
 # def form_valid(self, form):

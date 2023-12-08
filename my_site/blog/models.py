@@ -2,7 +2,7 @@ from django.db import models
 from django.utils import timezone
 from django.contrib.auth import get_user_model
 from django.urls import reverse
-
+from django.core.validators import FileExtensionValidator
 
 USER_MODEL = get_user_model()
 
@@ -13,7 +13,7 @@ class Post(models.Model):
     date_posted = models.DateTimeField(default=timezone.now)
     author = models.ForeignKey(USER_MODEL, on_delete=models.CASCADE)
     image = models.ImageField(default='chto.png', upload_to='profile_pics')
-    pdf = models.FileField(null="true", upload_to="blog/uploads")
+    pdf = models.FileField(validators=[FileExtensionValidator(['pdf'])], null="true", upload_to="blog/uploads")
     tag = models.CharField(max_length=20, null=True, default='без тега')
     # likes = models.IntegerField(default=0)
 

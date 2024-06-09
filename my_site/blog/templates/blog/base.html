@@ -29,7 +29,7 @@
           <span class="navbar-toggler-icon"></span>
           </button>
             <div class="collapse navbar-collapse" id="navbarToggle">
-              <form class="navbar-nav" method='GET'>
+              <div class="navbar-nav">
                 <div class="navbar-nav mr-auto">
                   <a class="nav-item nav-link " href="{% url 'blog-home' %}">Главная</a>
                   <a class="nav-item nav-link" href="{% url 'blog-about' %}">О ресурсе</a>
@@ -37,12 +37,15 @@
                 {% if user.is_authenticated %}
                   <a class="nav-item nav-link" href="{% url 'post-create' %}">Сделать публикацию</a>
                   <a class="nav-item nav-link" href="{% url 'profile' %}">Профиль</a>
-                  <a class="nav-item nav-link" href="{% url 'logout' %}">Выход</a>
+                  <form action="{% url "logout" %}" method="post">
+                    {% csrf_token %}
+                    <button type="submit" class="nav-item nav-link">Выход</button>
+                  </form>
                 {% else %}
                   <a class="nav-item nav-link" href="{% url 'login' %}">Вход</a>
                   <a class="nav-item nav-link" href="{% url 'register' %}">Регистрация</a>
                 {% endif %}
-              </form>
+                </div>
             </div>
           </div>
         </div>
